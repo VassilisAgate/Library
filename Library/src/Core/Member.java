@@ -3,6 +3,8 @@ package Core;
 import java.util.ArrayList;
 import java.util.List;
 
+import Exception.AvailabilityException;
+
 public class Member {
 
 	private int id;
@@ -16,7 +18,7 @@ public class Member {
 		onLoan = new ArrayList<Borrowable>();
 	}
 
-	public void borrows(Borrowable b) {
+	public void borrows(Borrowable b) throws AvailabilityException{
 
 		if (onLoan.size() < MAX_ON_LOAN) {
 			b.borrowItem();
@@ -25,7 +27,7 @@ public class Member {
 		}
 	}
 
-	public void returns(Borrowable b) {
+	public void returns(Borrowable b) throws AvailabilityException{
 
 		b.returnItem();
 		onLoan.remove(b);
